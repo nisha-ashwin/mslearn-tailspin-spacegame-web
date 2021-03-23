@@ -42,21 +42,21 @@ steps:
     command: 'restore'
     projects: '**/*.csproj'
 
-#- task: DotNetCoreCLI@2
-#  displayName: 'Build the project - Debug'
-#  inputs:
-#    command: 'build'
-#    arguments: '--no-restore --configuration Debug'
-#    projects: '**/*.csproj'
+- task: DotNetCoreCLI@2
+  displayName: 'Build the project - Debug'
+  inputs:
+    command: 'build'
+    arguments: '--no-restore --configuration Debug'
+    projects: '**/*.csproj'
 
-#- task: DotNetCoreCLI@2
-#  displayName: 'Publish the project - Debug'
-#  inputs:
-#    command: 'publish'
-#    projects: '**/*.csproj'
-#    publishWebProjects: false
-#    arguments: '--no-build --configuration Debug --output $(Build.ArtifactStagingDirectory)/Debug'
-#    zipAfterPublish: true
+- task: DotNetCoreCLI@2
+  displayName: 'Publish the project - Debug'
+  inputs:
+    command: 'publish'
+    projects: '**/*.csproj'
+    publishWebProjects: false
+    arguments: '--no-build --configuration Debug --output $(Build.ArtifactStagingDirectory)/Debug'
+    zipAfterPublish: true
 
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - Release'
@@ -73,3 +73,7 @@ steps:
     publishWebProjects: false
     arguments: '--no-build --configuration Release --output $(Build.ArtifactStagingDirectory)/Release'
     zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  condition: succeeded()
