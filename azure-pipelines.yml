@@ -8,7 +8,9 @@ trigger:
 
 pool:
   name: MyLocalAgentPool
-
+  demands: 
+  - npm
+  
 variables:
   buildConfiguration: 'Release'
 
