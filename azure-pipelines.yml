@@ -9,6 +9,7 @@ trigger:
 pool:
   name: MyLocalAgentPool
 
+
 variables:
   buildConfiguration: 'Release'
 
